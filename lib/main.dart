@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:thuyet_trinh_ltdd/Riverpod/view/riverpod_demo_screen.dart';
 import 'package:thuyet_trinh_ltdd/drift/model/database.dart';
 import 'package:thuyet_trinh_ltdd/drift/view/todo_view.dart';
+import 'package:thuyet_trinh_ltdd/dio/view/dio_view.dart';
 
 // Khởi tạo global instance cho database để dùng toàn app
 late AppDatabase database;
@@ -43,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
   // Danh sách 3 màn hình
   final List<Widget> _screens = [
     const TodoScreen(),
-    const Scaffold(body: Center(child: Text('Dio'))),
+    const DioDemoScreen(),
     const RiverpodDemoScreen(),
   ];
 
