@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:thuyet_trinh_ltdd/Riverpod/view/riverpod_demo_screen.dart';
 import 'package:thuyet_trinh_ltdd/drift/model/database.dart';
 import 'package:thuyet_trinh_ltdd/drift/view/todo_view.dart';
 
@@ -8,7 +10,10 @@ late AppDatabase database;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   database = AppDatabase();
-  runApp(const MyApp());
+  runApp(
+    // Wrap ứng dụng trong ProviderScope để khởi tạo Riverpod
+    const ProviderScope(child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -39,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const TodoScreen(),
     const Scaffold(body: Center(child: Text('Dio'))),
-    const Scaffold(body: Center(child: Text('Phan lam cua Hoang'))),
+    const RiverpodDemoScreen(),
   ];
 
   @override
@@ -58,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.widgets), label: 'Dio'),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Phan lam cua Hoang',
+            label: 'Count',
           ),
         ],
       ),
